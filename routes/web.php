@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\RealtimeEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::post('/send', function(){
+    $content = request()->content ?: '';
+    $sender = request()->sender ?: '';
+    event(new RealtimeEvent($content, $sender));
 });
