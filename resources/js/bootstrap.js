@@ -10,6 +10,8 @@ window._ = _;
 import axios from 'axios';
 window.axios = axios;
 
+
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -33,3 +35,6 @@ window.Echo = new Echo({
     forceTLS: false,
     enabledTransports: ['ws', 'wss']
 });
+
+import Push from 'push.js';
+window.Push = Push;

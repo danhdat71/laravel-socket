@@ -16,6 +16,15 @@ channel.subscribed(function(){
     const notiItem = document.createElement("div");
     notiItem.appendChild(document.createTextNode(`${event.sender}: ${event.content}`));
     document.getElementById('notis').appendChild(notiItem);
+    // Push notification
+    Push.create(event.sender, {
+        body: event.content,
+        timeout: 2000,
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+    });
 });
 
 
